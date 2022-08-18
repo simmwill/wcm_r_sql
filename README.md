@@ -1,4 +1,6 @@
 
+<br>
+
 ## Connecting R and SQL at WCM (Mac OSX)
 
 Much of this guide is taken from Michael Kleehammer’s [guide to
@@ -6,11 +8,18 @@ connecting SQL Server to Mac
 OSX](https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Mac-OSX).
 Most/all credit goes to him!
 
+<br>
+
 ### Steps
+
+<br>
 
 #### 1. Software prerequisites
 
-R, RStudio, and packages (`odbc`, `DBI`)
+Make sure you have R, RStudio, [Homebrew for Mac OS](https://brew.sh/),
+and some R packages (`odbc`, `DBI`) installed.
+
+<br>
 
 #### 2. Dealing with drivers, etc.
 
@@ -27,6 +36,8 @@ Prompt) and enter the following:
 brew update
 brew install unixodbc freetds
 ```
+
+<br>
 
 ##### **Edit the `freetds.conf` configuration file**
 
@@ -73,6 +84,8 @@ At this point you can run SQL queries, e.g. `SELECT @@VERSION`, but
 you’ll need to enter `GO` on a separate line to actually execute the
 query. Type `exit` to get out of the interactive SQL session.
 
+<br>
+
 ##### **Edit the `odbcinst.ini` and `odbc.ini` configuration files**
 
 Run `odbcinst -j` to get the location of the `odbcinst.ini` and
@@ -97,6 +110,8 @@ Driver              = FreeTDS
 Servername          = MYMSSQL
 ```
 
+<br>
+
 ### **If you have a MacBook with an M1 chip!**
 
 Run the following in your Terminal:
@@ -110,7 +125,9 @@ For some reason, Macbooks with M1 chips install the files we want to
 access in a different place. Running the above creates symlinks
 (symbolic “pointer” folders) that R can access without getting confused.
 
-## Testing!
+<br>
+
+## Testing your SQL-R connection!
 
 Open RStudio and create a new R script you’ll use to connect to the SQL
 server. (If you’re working in an Rproject that will use this connection,
@@ -152,8 +169,10 @@ using the `DBI::dbGetQuery` function.
 
 dbGetQuery(con,  # or whatever your connection is named
            "SELECT TOP(1) *
-           FROM ___")
+           FROM ___.___")  # schema.table
 ```
+
+<br>
 
 ## Conclusion
 
