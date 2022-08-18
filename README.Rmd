@@ -1,3 +1,7 @@
+---
+output: html_document
+---
+
 ## Connecting R and SQL at WCM (Mac OSX)
 
 Much of this guide is taken from Michael Kleehammer's [guide to connecting SQL Server to Mac OSX](https://github.com/mkleehammer/pyodbc/wiki/Connecting-to-SQL-Server-from-Mac-OSX). Most/all credit goes to him!
@@ -92,3 +96,12 @@ Check that all is OK by running `isql MYMSSQL cumc\\[YOUR UNI]` mypassword. You 
 ```
 
 You can enter SQL queries at this point if you like. Type quit to exit the interactive session.
+
+## **If you have a MacBook with an M1 chip!**
+
+Run the following in your Terminal:
+
+```{r, eval = FALSE}
+sudo ln -s /opt/homebrew/lib/ /usr/local/lib
+sudo ln -s /opt/homebrew/include/ /usr/local/include
+```
