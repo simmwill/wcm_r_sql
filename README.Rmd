@@ -41,7 +41,7 @@ port = 1433
 tds version = 7.3
 ```
 
-Test the connection using the tsql utility, e.g. `tsql -S MYMSSQL -U cumc\\[YOUR UNI]`, then entering your password. (Note that no text or character placeholders will appear as you type your password.) 
+Test the connection using the tsql utility, e.g. `tsql -S MYMSSQL -U cumc\\[YOUR CWID]`, then entering your password. (Note that no text or character placeholders will appear as you type your password.) 
 
 If this works, you should see the following:
 
