@@ -12,8 +12,6 @@ Most/all credit goes to him!
 
 ## Steps
 
-<br>
-
 #### 1. Software prerequisites
 
 Make sure you have R, RStudio, [Homebrew for Mac OS](https://brew.sh/),
