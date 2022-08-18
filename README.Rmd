@@ -104,6 +104,8 @@ sudo ln -s /opt/homebrew/include/ /usr/local/include
 
 For some reason, Macbooks with M1 chips install the files we want to access in a different place. Running the above creates symlinks (symbolic "pointer" folders) that R can access without getting confused.
 
+If you're still experiencing issues on an M1 Mac, I got this solution from [this thread](https://github.com/rails-sqlserver/tiny_tds/issues/484), which contains other potential solutions. 
+
 <br>
 
 ## Testing your SQL-R connection!
