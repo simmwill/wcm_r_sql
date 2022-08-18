@@ -112,7 +112,7 @@ Servername          = MYMSSQL
 
 <br>
 
-### **If you have a MacBook with an M1 chip!**
+#### 🚨**If you have a MacBook with an M1 chip!**🚨
 
 Run the following in your Terminal:
 
