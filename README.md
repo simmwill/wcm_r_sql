@@ -1,7 +1,7 @@
 
 <br>
 
-## Connecting R and SQL at WCM (Mac OSX)
+# Connecting R and SQL at WCM (Mac OSX)
 
 Much of this guide is taken from Michael Kleehammer’s [guide to
 connecting SQL Server to Mac
@@ -10,7 +10,7 @@ Most/all credit goes to him!
 
 <br>
 
-### Steps
+## Steps
 
 <br>
 
