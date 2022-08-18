@@ -97,25 +97,7 @@ Driver              = FreeTDS
 Servername          = MYMSSQL
 ```
 
-**STUCK ON THIS BIT** Check that all is OK by running
-`isql MYMSSQL cumc\\[YOUR UNI]` mypassword. You should see the
-following:
-
-``` r
-+---------------------------------------+
-| Connected!                            |
-|                                       |
-| sql-statement                         |
-| help [tablename]                      |
-| quit                                  |
-|                                       |
-+---------------------------------------+
-```
-
-You can enter SQL queries at this point if you like. Type quit to exit
-the interactive session.
-
-## **If you have a MacBook with an M1 chip!**
+### **If you have a MacBook with an M1 chip!**
 
 Run the following in your Terminal:
 
@@ -123,3 +105,59 @@ Run the following in your Terminal:
 sudo ln -s /opt/homebrew/lib/ /usr/local/lib
 sudo ln -s /opt/homebrew/include/ /usr/local/include
 ```
+
+For some reason, Macbooks with M1 chips install the files we want to
+access in a different place. Running the above creates symlinks
+(symbolic “pointer” folders) that R can access without getting confused.
+
+## Testing!
+
+Open RStudio and create a new R script you’ll use to connect to the SQL
+server. (If you’re working in an Rproject that will use this connection,
+you can name it `connect.R` or something similar and save it in a
+logical place.)
+
+Use the following code to create a SQL connection object in your R
+environment, using the `DBI` package:
+
+``` r
+con <- DBI::dbConnect(odbc::odbc(),
+                       Driver = "FreeTDS",
+                       Server = "VITS-ARCHSQLP04.a.wcmc-ad.net",
+                       Database = "YOUR_DATABASE",  # e.g. "COVID_DATALAKE"
+                       Port = 1433,
+                       # enter cumc\cwid at the prompt
+                       uid = "cumc\\YOUR_CWID",  # e.g. "cumc\\wis4002"
+                       # cwid password
+                       pwd = rstudioapi::askForPassword("Database password")
+)
+```
+
+When you run this code, three things should happen:
+
+1.  RStudio will ask for your password. Enter the password you normally
+    use to access WCM systems with your CWID.
+2.  In your R session, you’ll see a new object called `con` (or whatever
+    you named the connection object above - it doesn’t matter).
+3.  The “Connections” pane on RStudio may populate with the names of
+    many WCM SQL tables. (If not, don’t worry. You can usually trigger
+    this by rerunning the code above via the Connections pane \> Connect
+    \> R Console.)
+
+Now, run a simple SQL query to test your connection! Here’s an example
+using the `DBI::dbGetQuery` function.
+
+``` r
+# selects first row of table
+
+dbGetQuery(con,  # or whatever your connection is named
+           "SELECT TOP(1) *
+           FROM ___")
+```
+
+## Conclusion
+
+That’s it! If you want to learn about seamlessly integrating SQL and
+`dplyr`, check out my [short
+presentation](https://simmwill.github.io/dbplyr-pres.html) on the
+`dbplyr` package.
