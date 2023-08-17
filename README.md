@@ -17,6 +17,20 @@ Most/all credit goes to him!
 Make sure you have R, RStudio, [Homebrew for Mac OS](https://brew.sh/),
 and some R packages (`odbc`, `DBI`) installed.
 
+**Note, August 2023**: The newest version of the R `odbc` package as of Aug. 2023 caused my R-SQL connection to break. If you update your packages or R and this suddenly doesn't work (and/or you receive an error message like the below), use the code below to install an older version of `odbc`. I think this is due to [the default ODBC manager for `odbc` changing](https://stackoverflow.com/questions/76764811/troubleshooting-freetds-odbc-sql-connection-issues-in-r), but I'm not sure.
+
+<br>
+
+`Error: nanodbc/nanodbc.cpp:1135: 00000: [unixODBC][Driver Manager]Can't open lib 'FreeTDS' : file not found`
+
+<br>
+
+Solution:
+
+``` r
+install_version("odbc", version = "1.3.3", repos = "http://cran.us.r-project.org")
+```
+
 <br>
 
 #### 2. Dealing with drivers, etc.
